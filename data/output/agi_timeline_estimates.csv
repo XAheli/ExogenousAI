@@ -1,0 +1,5 @@
+scenario,median_months,mean_months,p10_months,p90_months,probability_within_horizon,threshold,median_year,mean_year,p10_year,p90_year
+Status Quo,20.0,26.3111,7.0,60.0,0.8688,95.0,2027,2028,2026,2030
+Compute Governance,20.0,26.9215,6.0,60.0,0.8308,95.0,2027,2028,2026,2030
+Export Control Escalation,17.0,25.4139,4.0,60.0,0.8079,95.0,2027,2027,2026,2030
+Open Collaboration,17.0,23.106,6.0,57.0,0.9076,95.0,2027,2027,2026,2030

@@ -1,0 +1,171 @@
+# ExogenousAI Configuration File
+
+# Project metadata
+project:
+  name: "ExogenousAI"
+  version: "1.0.0"
+  description: "Policy Shock Impact Analysis on AI Capability Timelines"
+
+# Data paths
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  policy_events: "data/policy_events.csv"
+  output: "data/output"
+
+# Create secrets.toml in project root with your API keys
+# See secrets.toml.example for template
+
+# Local data sources (manual downloads)
+data_sources:
+  epochai:
+    ai_models_path: "data/raw/epochai/ai_models"
+    gpu_clusters_path: "data/raw/epochai/gpu_clusters"
+    ml_hardware_path: "data/raw/epochai/ml_hardware"
+
+# Data collection parameters
+data_collection:
+  # Papers With Code benchmarks
+  pwc:
+    benchmarks:
+      - "MMLU"
+      - "HumanEval"
+      - "MATH"
+    top_k_models: 10
+    base_url: "https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard"
+  
+  # arXiv parameters
+  arxiv:
+    categories:
+      - "cs.AI"
+      - "cs.LG"
+    start_date: "2022-01-01"
+    end_date: "2025-10-31"
+    max_results: 10000
+  
+  # Stock data
+  stocks:
+    ticker: "NVDA"
+    start_date: "2022-01-01"
+    end_date: "2025-10-31"
+  
+  # EpochAI data (manual entry or API if available)
+  epochai:
+    models:
+      - "GPT-4"
+      - "Claude 3"
+      - "Gemini"
+      - "Llama 3"
+
+# Policy events timeline
+policy_events:
+  events:
+    - date: "2022-10-07"
+      name: "US Export Controls (A100/H100)"
+      description: "US export controls on A100/H100 GPUs to China"
+      severity: 0.75
+      source: "Federal Register 87 FR 62186"
+    
+    - date: "2023-10-17"
+      name: "Updated Export Controls (A800/H800)"
+      description: "Expanded restrictions to A800/H800 chips"
+      severity: 0.80
+      source: "Federal Register 88 FR 73482"
+    
+    - date: "2024-07-15"
+      name: "Trilateral Semiconductor Agreement"
+      description: "US-Netherlands-Japan export agreement"
+      severity: 0.70
+      source: "Trilateral Agreement"
+    
+    - date: "2024-12-01"
+      name: "OpenAI Governance Proposal"
+      description: "10^26 FLOP compute threshold proposal"
+      severity: 0.60
+      source: "OpenAI Public Discourse"
+    
+    - date: "2025-02-01"
+      name: "EU AI Act Implementation"
+      description: "High-risk system requirements"
+      severity: 0.65
+      source: "Regulation (EU) 2024/1689"
+
+# Event study parameters
+event_study:
+  pre_event_window: 6  # months
+  post_event_window: 6  # months
+  significance_level: 0.05
+  trend_model: "exponential"  # "linear" or "exponential"
+
+# Scenario modeling parameters
+scenarios:
+  baseline:
+    name: "Status Quo"
+    policy_factor: 1.00
+    policy_sigma: 0.08
+  
+  compute_governance:
+    name: "Compute Governance"
+    policy_factor: 0.85
+    policy_sigma: 0.12
+    description: "15% slowdown due to compute caps"
+  
+  export_escalation:
+    name: "Export Control Escalation"
+    policy_factor: 0.75
+    policy_sigma: 0.18
+    description: "25% slowdown due to supply chain disruption"
+  
+  open_collaboration:
+    name: "Open Collaboration"
+    policy_factor: 1.20
+    policy_sigma: 0.10
+    description: "20% acceleration due to increased cooperation"
+
+# Monte Carlo simulation
+monte_carlo:
+  n_iterations: 10000
+  forecast_horizon: 60  # months (5 years)
+  random_seed: 42
+  confidence_intervals:
+    - 0.10
+    - 0.25
+    - 0.50
+    - 0.75
+    - 0.90
+
+# Meta-forecasting baselines
+meta_forecasting:
+  baselines:
+    epochai:
+      median_year: 2036
+      p10_year: 2030
+      p90_year: 2050
+      source: "Sevilla et al., 2023"
+    
+    bio_anchors:
+      median_year: 2055
+      p10_year: 2040
+      p90_year: 2080
+      source: "Cotra, 2022"
+    
+    ai_2027:
+      median_year: 2027
+      p10_year: 2025
+      p90_year: 2030
+      source: "Kokotajlo, 2025"
+
+# Visualization settings
+visualization:
+  style: "seaborn-v0_8-darkgrid"
+  figure_size:
+    width: 12
+    height: 8
+  color_palette: "husl"
+  dpi: 300
+
+# Dashboard settings
+dashboard:
+  title: "ExogenousAI: Policy Impact Dashboard"
+  port: 8501
+  theme: "light"

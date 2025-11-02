@@ -1,0 +1,8 @@
+source,model,median_year,p10_year,p90_year,method
+ExogenousAI - Status Quo,Policy-Adjusted,2027,2026,2030,Event Study + Monte Carlo
+ExogenousAI - Compute Governance,Policy-Adjusted,2027,2026,2030,Event Study + Monte Carlo
+ExogenousAI - Export Control Escalation,Policy-Adjusted,2027,2026,2030,Event Study + Monte Carlo
+ExogenousAI - Open Collaboration,Policy-Adjusted,2027,2026,2030,Event Study + Monte Carlo
+EPOCHAI,"Sevilla et al., 2023",2036,2030,2050,Literature Baseline
+BIO ANCHORS,"Cotra, 2022",2055,2040,2080,Literature Baseline
+AI 2027,"Kokotajlo, 2025",2027,2025,2030,Literature Baseline

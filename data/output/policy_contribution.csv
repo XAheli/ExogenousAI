@@ -1,0 +1,2 @@
+total_variance,policy_variance,baseline_variance,policy_contribution_pct,note
+111.57142857142857,0.0,204.33333333333331,0.0,Policy variance from CI spread
