@@ -1,6 +1,5 @@
 # ExogenousAI: Policy Impact on AI Capability Timelines
 
-**A research framework for analyzing how policy events influence AI development trajectories using event study methodology and Monte Carlo scenario modeling.**
 
 ## Project Overview
 
@@ -12,7 +11,6 @@ ExogenousAI quantifies the impact of external policy interventions on AI capabil
 ### Research Question
 *How do policy interventions (compute governance, export controls, collaboration frameworks) affect the timeline to transformative AI capabilities?*
 
----
 
 ## Key Findings
 
@@ -50,7 +48,6 @@ ExogenousAI quantifies the impact of external policy interventions on AI capabil
 
 ExogenousAI aligns with aggressive near-term forecasts (AI 2027) due to observed 25.5% annual growth in MMLU-Pro benchmarks.
 
----
 
 ## Data Sources
 
@@ -74,10 +71,7 @@ ExogenousAI aligns with aggressive near-term forecasts (AI 2027) due to observed
 ✅ **No interpolation**: All missing values preserved as NaN  
 ✅ **No hardcoded values**: Zero manually entered benchmarks  
 ✅ **No synthetic data**: Only real leaderboard scores  
-✅ **Single authoritative source**: TIGER-Lab/MMLU-Pro exclusively for benchmarks  
-✅ **Properly dated**: Model release dates from public announcements  
 
----
 
 ## Methodology
 
@@ -136,8 +130,6 @@ Var_total = Var_policy + Var_technical + Var_economic
 
 **Finding**: Policy variance = 0.0 because all scenario medians = 2027. This indicates strong baseline trend dominates policy effects in central estimates.
 
----
-
 ## Pipeline Architecture
 
 ### Data Collection (`src/data_collection/`)
@@ -159,8 +151,6 @@ Var_total = Var_policy + Var_technical + Var_economic
 ### Visualization (`src/visualization/`)
 1. **plot_events.py**: Time series with policy event markers, CAR plots
 2. **plot_scenarios.py**: Monte Carlo trajectories, timeline distributions, uncertainty decomposition
-
----
 
 ## Installation & Setup
 
@@ -186,7 +176,7 @@ pip install -r requirements.txt
 ```
 
 ### Step 4: Configure API Keys
-Create `.env` file in project root:
+Create `secrets.toml` file in project root:
 ```env
 SERP_API_KEY=your_serpapi_key_here
 ALPHAVANTAGE_API_KEY=your_alphavantage_key_here
@@ -204,8 +194,6 @@ EpochAI training compute data is included in `data/raw/epochai/`. If re-download
 # Manually download from https://epoch.ai/data
 # Place CSVs in data/raw/epochai/ai_models/
 ```
-
----
 
 ## Usage
 
@@ -323,16 +311,8 @@ ExogenousAI/
 │       ├── scenario_trajectories.png
 │       └── timeline_distributions.png
 │
-├── notebooks/                  # Jupyter notebooks (exploratory analysis)
-│   ├── 01_data_collection.ipynb
-│   ├── 02_event_study.ipynb
-│   ├── 03_scenario_modeling.ipynb
-│   └── 04_results_analysis.ipynb
-│
 └── tests/                      # Unit tests (minimal - research prototype)
 ```
-
----
 
 ## Challenges Encountered
 
@@ -409,7 +389,6 @@ ExogenousAI/
 - Shift to "model release events" rather than "policy events"
 - Employ interrupted time series analysis (fewer data requirements)
 
----
 
 ## Technical Decisions & Rationale
 
@@ -463,7 +442,6 @@ ExogenousAI/
 - 95% MMLU-Pro ≈ 99th percentile human expert
 - Aligns with "economically transformative" capability threshold
 
----
 
 ## Results Interpretation
 
@@ -505,25 +483,6 @@ Var_policy = Var([2027, 2027, 2027, 2027]) = 0
 - Historical evidence: Export controls on GPUs (2022-2024) didn't stop frontier progress
 - But: More aggressive interventions (compute caps, research moratoria) could matter more
 
-### Comparison with Literature: Why More Optimistic?
-
-**ExogenousAI**: 2027  
-**EpochAI**: 2036  
-**Bio Anchors**: 2055  
-
-**Possible Reasons**:
-1. **Data Vintage**: Using Nov 2025 benchmarks (Phi-4-mini 52.8%), literature used 2023-2024 data
-2. **Acceleration Surprise**: 2024-2025 saw unexpected capabilities (o1, Phi-4, etc.)
-3. **Benchmark Choice**: MMLU-Pro may be "easier" than hypothetical AGI benchmarks
-4. **Threshold Calibration**: 95% MMLU-Pro may not equal transformative AI
-5. **Extrapolation Risk**: Exponential fit assumes no slowdown (scaling laws continuation)
-
-**Reconciliation**:
-- ExogenousAI reflects *if current trends continue*
-- EpochAI/Bio Anchors may incorporate expected slowdowns, compute limits
-- Truth likely between 2027-2036 range
-
----
 
 ## Limitations
 
@@ -542,15 +501,6 @@ Var_policy = Var([2027, 2027, 2027, 2027]) = 0
 ### Scope Limitations
 1. **Capabilities ≠ Deployment**: Timelines are for *technical capability*, not societal impact
 2. **Safety Excluded**: Doesn't model alignment, interpretability progress
-3. **Economic Factors**: Doesn't incorporate compute costs, market dynamics
-4. **Black Swans**: Doesn't account for breakthrough discoveries or catastrophic failures
-
-### Reproducibility Limitations
-1. **API Dependence**: SERP, Alpha Vantage APIs may change or deprecate
-2. **Manual Data**: MMLU-Pro leaderboard manually copied (no automated scraper)
-3. **Proprietary Data**: Some baselines (Bio Anchors) use non-public models
-
----
 
 ## Future Work
 
@@ -572,7 +522,6 @@ Var_policy = Var([2027, 2027, 2027, 2027]) = 0
 3. **Economic Impact**: Link capability timelines to GDP, employment effects
 4. **Global Coordination**: Multi-country game theory (US/China AI race)
 
----
 
 ## Citation
 
@@ -588,114 +537,4 @@ If you use this framework in your research, please cite:
 }
 ```
 
----
-
-## Contact & Contributions
-
-- **Repository**: https://github.com/XAheli/ExogenousAI
-- **Issues**: https://github.com/XAheli/ExogenousAI/issues
-- **Maintainer**: [@XAheli](https://github.com/XAheli)
-
-**Contributions Welcome**: 
-- Benchmark data updates (MMLU-Pro, HumanEval, etc.)
-- Improved policy scenario calibration
-- Additional event study periods
-- Code optimizations & bug fixes
-
-**Development Roadmap**: See [CONTRIBUTING.md](CONTRIBUTING.md) (if you create one)
-
----
-
-## Acknowledgments
-
-- **Data Sources**: TIGER-Lab (MMLU-Pro), EpochAI (training compute), SERP API, Alpha Vantage, arXiv
-- **Methodological Foundations**: Event study (Fama et al. 1969), Monte Carlo simulation (Metropolis & Ulam 1949), Meta-forecasting (Tetlock & Gardner 2015)
-- **AI Forecasting Literature**: Cotra (2020) Bio Anchors, EpochAI Compute Trends, Ajeya Cotra's Forecasting Transformative AI
-- **Tools**: Python, pandas, NumPy, SciPy, matplotlib, seaborn
-
----
-
-## Appendix: Configuration Reference
-
-### config.yaml Structure
-```yaml
-paths:
-  raw_data: "data/raw"
-  processed_data: "data/processed"
-  output: "data/output"
-  policy_events: "data/raw/policy_events.csv"
-
-api_keys:
-  serp: "YOUR_SERPAPI_KEY"
-  alphavantage: "YOUR_ALPHAVANTAGE_KEY"
-  arxiv_email: "your_email@example.com"
-
-data_sources:
-  policy_events:
-    query: "AI policy regulation governance"
-    num_results: 100
-  
-  stocks:
-    symbol: "NVDA"
-  
-  arxiv:
-    categories: ["cs.AI", "cs.LG", "cs.CL"]
-
-event_study:
-  pre_window: 6    # months before event
-  post_window: 6   # months after event
-  normal_window: 12  # baseline period
-
-monte_carlo:
-  n_iterations: 10000
-  forecast_horizon: 60  # months
-  random_seed: 42
-  confidence_intervals: [0.10, 0.25, 0.50, 0.75, 0.90]
-
-scenarios:
-  baseline:
-    name: "Status Quo"
-    policy_factor: 1.00
-    policy_sigma: 0.02
-  
-  compute_governance:
-    name: "Compute Governance"
-    policy_factor: 0.95
-    policy_sigma: 0.03
-  
-  export_escalation:
-    name: "Export Control Escalation"
-    policy_factor: 0.90
-    policy_sigma: 0.05
-  
-  open_collaboration:
-    name: "Open Collaboration"
-    policy_factor: 1.05
-    policy_sigma: 0.02
-
-meta_forecasting:
-  baselines:
-    epochai:
-      source: "EpochAI"
-      median_year: 2036
-      p10_year: 2030
-      p90_year: 2050
-    
-    bio_anchors:
-      source: "Bio Anchors (Cotra 2020)"
-      median_year: 2055
-      p10_year: 2040
-      p90_year: 2080
-    
-    ai_2027:
-      source: "AI 2027 Report"
-      median_year: 2027
-      p10_year: 2025
-      p90_year: 2030
-```
-
----
-
-**Last Updated**: November 3, 2025  
-**Framework Version**: 1.0.0  
 **Status**: Research Prototype - Results are preliminary and should not guide high-stakes decisions.
