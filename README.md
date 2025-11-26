@@ -1,6 +1,9 @@
 # ExogenousAI: Policy Impact on AI Capability Timelines
 
 
+> [!IMPORTANT]
+> **Project Submission**: View the official project page and hackathon submission on **[Apart Research](https://apartresearch.com/project/exogenousai)**
+
 ## Project Overview
 
 ExogenousAI quantifies the impact of external policy interventions on AI capability development by combining:
