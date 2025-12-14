@@ -2,6 +2,8 @@
 
 
 > [!IMPORTANT]
+> **We came in 4th position 🏅**
+> 
 > **Project Submission**: View the official project page and hackathon submission on **[Apart Research](https://apartresearch.com/project/exogenousai)**
 
 ## Project Overview
