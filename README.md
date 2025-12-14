@@ -414,12 +414,13 @@ Var_policy = Var([2027, 2027, 2027, 2027]) = 0
 If you use this framework in your research, please cite:
 
 ```bibtex
-@software{exogenousai2025,
-  author = {Aheli Poddar},
-  title = {ExogenousAI: Policy Impact on AI Capability Timelines},
-  year = {2025},
-  publisher = {GitHub},
-  url = {https://github.com/XAheli/ExogenousAI}
+@misc{exogenousai2025,
+  title        = {(HckPrj) ExogenousAI},
+  author       = {Aheli Poddar},
+  year         = {2025},
+  organization = {Apart Research},
+  note         = {Hackathon research sprint submission},
+  url          = {https://apartresearch.com/project/exogenousai}
 }
 ```
 
